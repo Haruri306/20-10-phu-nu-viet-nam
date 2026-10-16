@@ -34,6 +34,23 @@
       font-family: 'Dancing Script', cursive;
     }
 
+    /* Creator Badge Style */
+    .creator-badge {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56, 189, 248, 0.2);
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .creator-badge:hover {
+      transform: translateY(-2px) scale(1.04);
+      border-color: rgba(125, 211, 252, 0.7);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.45);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
     /* Glowing Sky Title */
     .glow-title {
       color: #eef8ff;
@@ -117,11 +134,23 @@
 </head>
 <body class="relative w-full h-full overflow-hidden select-none">
 
+  <!-- 0. CREATOR BADGE (TOP LEFT) -->
+  <a href="https://guns.lol/nguyenbao.dev" target="_blank" rel="noopener noreferrer"
+     class="creator-badge fixed top-3 left-3 sm:top-4 sm:left-4 z-[200] flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full cursor-pointer text-xs sm:text-sm font-medium tracking-wide">
+    <span class="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-sky-400"></span>
+    </span>
+    <span class="text-sky-200 opacity-80 text-[11px] sm:text-xs">Created by:</span>
+    <span class="font-semibold text-sky-100 hover:text-white transition-colors">guns.lol/nguyenbao.dev</span>
+    <span class="text-sky-300 text-xs">↗</span>
+  </a>
+
   <!-- 1. BACKGROUND CANVAS (Night Sky, Stars, Hills, Bouquet & Fireflies) -->
   <canvas id="sceneCanvas" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
   <!-- 2. GLOWING SKY TITLE -->
-  <div id="skyTitle" class="fixed top-9 sm:top-11 left-0 right-0 z-10 text-center px-4 pointer-events-none opacity-0 transition-all duration-1000 transform translate-y-2">
+  <div id="skyTitle" class="fixed top-12 sm:top-14 left-0 right-0 z-10 text-center px-4 pointer-events-none opacity-0 transition-all duration-1000 transform translate-y-2">
     <h1 class="font-cursive text-[30px] sm:text-5xl glow-title leading-tight">
       Chúc mừng ngày phụ nữ Việt Nam
     </h1>
@@ -172,7 +201,7 @@
 
     <div class="border-b border-dashed border-[#d4b288] pb-1.5 mb-1.5 pointer-events-none">
       <h3 class="font-cursive text-2xl sm:text-[28px] font-bold text-[#4d321e] leading-tight">
-        Gửi các bạn nữ <span class="text-rose-500">10A6</span>
+        Gửi các bạn nữ <span class="text-rose-500">8A1</span>
       </h3>
     </div>
 
@@ -204,7 +233,7 @@
 
         <!-- Greeting Header -->
         <h2 id="letterHeading" class="font-cursive text-2xl sm:text-[28px] font-bold text-center text-[#4a301d] mb-3 leading-snug">
-          Gửi các bạn nữ <span class="text-rose-500">10A6</span> xinh đẹp!
+          Gửi các bạn nữ <span class="text-rose-500">8A1</span> xinh đẹp!
         </h2>
 
         <!-- Typewriter Body Paragraphs -->
@@ -224,13 +253,13 @@
 
   <script>
     /*************************************************************************
-     * 1. 20/10 LETTER CONTENT FOR CLASS 10A6
+     * 1. 20/10 LETTER CONTENT FOR CLASS 8A1
      *************************************************************************/
-    const letterTitleHTML = 'Gửi các bạn nữ <span class="text-rose-500">10A6</span> xinh đẹp!';
+    const letterTitleHTML = 'Gửi các bạn nữ <span class="text-rose-500">8A1</span> xinh đẹp!';
     const letterParagraphs = [
-      "Nhân ngày Phụ nữ Việt Nam 20/10, chúc một nửa thế giới của tập thể 10A6 luôn rạng rỡ như những đóa hoa Tulip dưới bầu trời đêm đầy sao.",
+      "Nhân ngày Phụ nữ Việt Nam 20/10, chúc một nửa thế giới của tập thể 8A1 luôn rạng rỡ như những đóa hoa Tulip dưới bầu trời đêm đầy sao.",
       "Cảm ơn các bạn vì đã luôn mang đến tiếng cười, sự dịu dàng và nguồn năng lượng tích cực, làm cho mỗi ngày đến lớp đều trở nên thật ý nghĩa.",
-      "Chúc các bạn nữ 10A6 luôn vui vẻ, xinh đẹp, học giỏi, ngập tràn hạnh phúc và có thật nhiều kỷ niệm thanh xuân tuyệt đẹp dưới mái trường cùng 10A6!"
+      "Chúc các bạn nữ 8A1 luôn vui vẻ, xinh đẹp, học giỏi, ngập tràn hạnh phúc và có thật nhiều kỷ niệm thanh xuân tuyệt đẹp dưới mái trường cùng 8A1!"
     ];
 
     /*************************************************************************
@@ -357,7 +386,7 @@
       { id: 7, tx:  60, ty: -184, bx:  11, angle:  0.17, scale: 0.99, stemStart: 1.48, bloomStart: 1.80, layer: 2, phase: 5.0 },
       { id: 8, tx: -106, ty: -156, bx: -19, angle: -0.34, scale: 0.95, stemStart: 1.54, bloomStart: 1.86, layer: 3, phase: 0.9 },
       { id: 9, tx:  106, ty: -156, bx:  19, angle:  0.34, scale: 0.95, stemStart: 1.58, bloomStart: 1.90, layer: 3, phase: 2.2 },
-      { id: 10, tx:   0, ty: -148, bx:   0, angle:  0.00, scale: 1.06, stemStart: 1.62, bloomStart: 1.94, layer: 3, phase: 3.9 }
+      { id: 10, tx:  0, ty: -148, bx:   0, angle:  0.00, scale: 1.06, stemStart: 1.62, bloomStart: 1.94, layer: 3, phase: 3.9 }
     ];
 
     const LEAF_DEFS = [
@@ -835,492 +864,288 @@
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = '#cfa472';
+        ctx.strokeStyle = '#d6b080';
+        ctx.lineWidth = 2.2;
         ctx.beginPath();
-        ctx.moveTo(-144, -152);
-        ctx.lineTo(-96, -125);
-        ctx.lineTo(-38, 2);
-        ctx.lineTo(-56, 26);
-        ctx.closePath();
-        ctx.fill();
-
-        ctx.fillStyle = '#c49764';
-        ctx.beginPath();
-        ctx.moveTo(144, -152);
-        ctx.lineTo(96, -125);
-        ctx.lineTo(38, 2);
-        ctx.lineTo(56, 26);
-        ctx.closePath();
-        ctx.fill();
-
-        const leftFoldGrad = ctx.createLinearGradient(-135, -145, 20, 5);
-        leftFoldGrad.addColorStop(0, '#fae8cf');
-        leftFoldGrad.addColorStop(0.55, '#e6c396');
-        leftFoldGrad.addColorStop(1, '#c79c69');
-        ctx.save();
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.28)';
-        ctx.shadowBlur = 10;
-        ctx.shadowOffsetX = 3;
-        ctx.shadowOffsetY = 4;
-        ctx.fillStyle = leftFoldGrad;
-        ctx.beginPath();
-        ctx.moveTo(-136, -148);
-        ctx.lineTo(14, -72);
-        ctx.lineTo(34, 2);
-        ctx.lineTo(-36, 2);
-        ctx.lineTo(-92, -78);
-        ctx.closePath();
-        ctx.fill();
-        ctx.restore();
-
-        const rightFoldGrad = ctx.createLinearGradient(135, -145, -20, 5);
-        rightFoldGrad.addColorStop(0, '#f7e2c4');
-        rightFoldGrad.addColorStop(0.55, '#ddb686');
-        rightFoldGrad.addColorStop(1, '#b88b56');
-        ctx.save();
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.32)';
-        ctx.shadowBlur = 12;
-        ctx.shadowOffsetX = -3;
-        ctx.shadowOffsetY = 4;
-        ctx.fillStyle = rightFoldGrad;
-        ctx.beginPath();
-        ctx.moveTo(136, -148);
-        ctx.lineTo(-14, -72);
-        ctx.lineTo(-34, 2);
-        ctx.lineTo(36, 2);
-        ctx.lineTo(92, -78);
-        ctx.closePath();
-        ctx.fill();
-        ctx.restore();
-
-        const ribGrad = ctx.createLinearGradient(-45, -15, 45, 25);
-        ribGrad.addColorStop(0, '#ffd4e4');
-        ribGrad.addColorStop(0.45, '#f48fb1');
-        ribGrad.addColorStop(1, '#c94f7c');
-
-        ctx.fillStyle = ribGrad;
-        ctx.beginPath();
-        ctx.roundRect(-37, -7, 74, 13, 6);
-        ctx.fill();
-
-        const tailSway = Math.sin(time * 0.0025) * 3;
-        ctx.beginPath();
-        ctx.moveTo(-6, 3);
-        ctx.quadraticCurveTo(-22, 34, -36 + tailSway, 70);
-        ctx.lineTo(-21 + tailSway, 67);
-        ctx.quadraticCurveTo(-10, 36, 2, 4);
-        ctx.closePath();
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.moveTo(6, 3);
-        ctx.quadraticCurveTo(22, 34, 36 + tailSway, 70);
-        ctx.lineTo(21 + tailSway, 67);
-        ctx.quadraticCurveTo(10, 36, -2, 4);
-        ctx.closePath();
-        ctx.fill();
+        ctx.moveTo(-38, 12);
+        ctx.quadraticCurveTo(0, 24, 38, 12);
+        ctx.stroke();
 
         ctx.save();
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
-        ctx.shadowBlur = 6;
-        ctx.fillStyle = ribGrad;
-        ctx.strokeStyle = '#ffe3ee';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(0, -1);
-        ctx.bezierCurveTo(-28, -22, -52, -14, -46, 5);
-        ctx.bezierCurveTo(-40, 20, -18, 12, 0, -1);
-        ctx.fill();
-        ctx.stroke();
+        ctx.translate(0, 26);
+        ctx.rotate(0.04 * Math.sin(time * 0.002));
+        ctx.fillStyle = '#ef4444';
+        ctx.shadowColor = 'rgba(239, 68, 68, 0.75)';
+        ctx.shadowBlur = 14;
 
         ctx.beginPath();
-        ctx.moveTo(0, -1);
-        ctx.bezierCurveTo(28, -22, 52, -14, 46, 5);
-        ctx.bezierCurveTo(40, 20, 18, 12, 0, -1);
+        ctx.moveTo(0, 6);
+        ctx.bezierCurveTo(-15, -10, -28, 4, -12, 20);
+        ctx.bezierCurveTo(-4, 27, -2, 30, 0, 34);
+        ctx.bezierCurveTo(2, 30, 4, 27, 12, 20);
+        ctx.bezierCurveTo(28, 4, 15, -10, 0, 6);
         ctx.fill();
-        ctx.stroke();
-
-        ctx.strokeStyle = 'rgba(176, 48, 96, 0.55)';
-        ctx.lineWidth = 1.4;
-        ctx.beginPath();
-        ctx.moveTo(-34, -1);
-        ctx.quadraticCurveTo(-18, -3, -6, -1);
-        ctx.moveTo(34, -1);
-        ctx.quadraticCurveTo(18, -3, 6, -1);
-        ctx.stroke();
-
-        ctx.fillStyle = '#e86492';
-        ctx.beginPath();
-        ctx.ellipse(0, -1, 8.5, 7.5, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = '#ffdce9';
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
         ctx.restore();
 
         ctx.restore();
       }
 
       ctx.restore();
-
-      const lilyProg = clamp01((elapsed - 1.45) / 1.0);
-      const lilyOffset = Math.min(165, W * 0.34);
-      drawLilyOfTheValley(ctx, centerX - lilyOffset, H - 28, -1, lilyProg, time);
-      drawLilyOfTheValley(ctx, centerX + lilyOffset, H - 28,  1, lilyProg, time);
-
-      const envCard = document.getElementById('envelopeCard');
-      if (envCard) {
-        const cardY = baseTieY - 92 * bScale;
-        envCard.style.top = `${cardY}px`;
-        envCard.style.left = `${centerX + globalSway * 0.35}px`;
-      }
     }
 
-    function animate(time) {
+    function renderScene(time) {
+      ctx.clearRect(0, 0, W, H);
+
       const skyGrad = ctx.createLinearGradient(0, 0, 0, H);
-      skyGrad.addColorStop(0, '#040716');
-      skyGrad.addColorStop(0.4, '#091638');
-      skyGrad.addColorStop(0.75, '#122c5c');
-      skyGrad.addColorStop(1, '#1b3b73');
+      skyGrad.addColorStop(0, '#02040a');
+      skyGrad.addColorStop(0.4, '#070f24');
+      skyGrad.addColorStop(0.8, '#101d3a');
+      skyGrad.addColorStop(1, '#1b2d4f');
       ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, W, H);
 
-      for (const s of stars) {
-        const tw = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(time * s.speed + s.phase));
-        ctx.fillStyle = `rgba(235, 245, 255, ${s.alpha * tw})`;
+      stars.forEach(st => {
+        const twinkle = Math.sin(time * st.speed + st.phase);
+        const a = clamp01(st.alpha + twinkle * 0.25);
+        ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
         ctx.fill();
-      }
+      });
 
-      if (Math.random() < 0.022 && shootingStars.length < 2) {
+      if (Math.random() < 0.008 && shootingStars.length < 2) {
         spawnShootingStar();
       }
+
       for (let i = shootingStars.length - 1; i >= 0; i--) {
-        const st = shootingStars[i];
-        st.x += st.vx;
-        st.y += st.vy;
-        st.life -= st.decay;
-        if (st.life <= 0) {
+        const ss = shootingStars[i];
+        ss.x += ss.vx;
+        ss.y += ss.vy;
+        ss.life -= ss.decay;
+
+        if (ss.life <= 0 || ss.x < 0 || ss.y > H) {
           shootingStars.splice(i, 1);
           continue;
         }
-        const tx = st.x - st.vx * (st.len / 9);
-        const ty = st.y - st.vy * (st.len / 9);
-        const g = ctx.createLinearGradient(st.x, st.y, tx, ty);
-        g.addColorStop(0, `rgba(255, 255, 255, ${st.life})`);
-        g.addColorStop(0.3, `rgba(165, 230, 255, ${st.life * 0.75})`);
-        g.addColorStop(1, 'rgba(155, 220, 255, 0)');
-        ctx.strokeStyle = g;
-        ctx.lineWidth = 2.0;
-        ctx.lineCap = 'round';
+
+        const tailGrad = ctx.createLinearGradient(ss.x, ss.y, ss.x - ss.vx * 3.2, ss.y - ss.vy * 3.2);
+        tailGrad.addColorStop(0, `rgba(255, 255, 255, ${ss.life * 0.9})`);
+        tailGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        ctx.strokeStyle = tailGrad;
+        ctx.lineWidth = 1.8;
         ctx.beginPath();
-        ctx.moveTo(st.x, st.y);
-        ctx.lineTo(tx, ty);
+        ctx.moveTo(ss.x, ss.y);
+        ctx.lineTo(ss.x - ss.vx * 3.2, ss.y - ss.vy * 3.2);
         ctx.stroke();
       }
 
-      if (appState !== 'HOLD') {
-        const elapsed = (performance.now() - growStartTime) / 1000;
-        const landAlpha = clamp01(elapsed / 0.65);
+      fireflies.forEach(f => {
+        f.x += f.vx + Math.sin(time * 0.002 + f.phase) * 0.3;
+        f.y += f.vy;
+        if (f.y < -20) f.y = H + 20;
+        if (f.x < -20) f.x = W + 20;
+        if (f.x > W + 20) f.x = -20;
 
-        ctx.save();
-        ctx.globalAlpha = landAlpha;
-
-        const horizonY = H * 0.72;
-
-        ctx.fillStyle = '#0a224a';
+        const pulse = (Math.sin(time * 0.004 + f.phase) + 1) * 0.5;
+        ctx.fillStyle = f.isGold ? `rgba(255, 235, 140, ${0.3 + pulse * 0.6})` : `rgba(160, 220, 255, ${0.3 + pulse * 0.6})`;
         ctx.beginPath();
-        ctx.moveTo(0, H);
-        ctx.lineTo(0, horizonY - 8);
-        ctx.bezierCurveTo(W * 0.22, horizonY - 48, W * 0.52, horizonY + 14, W, horizonY - 28);
-        ctx.lineTo(W, H);
-        ctx.closePath();
+        ctx.arc(f.x, f.y, f.r + pulse * 0.8, 0, Math.PI * 2);
         ctx.fill();
+      });
 
-        ctx.fillStyle = '#061733';
+      const hillGrad = ctx.createLinearGradient(0, H - 180, 0, H);
+      hillGrad.addColorStop(0, '#0a2214');
+      hillGrad.addColorStop(1, '#030c07');
+      ctx.fillStyle = hillGrad;
+      ctx.beginPath();
+      ctx.moveTo(0, H);
+      ctx.lineTo(0, H - 90);
+      ctx.bezierCurveTo(W * 0.35, H - 160, W * 0.68, H - 50, W, H - 110);
+      ctx.lineTo(W, H);
+      ctx.closePath();
+      ctx.fill();
+
+      grassBlades.forEach(gb => {
+        const sway = Math.sin(time * gb.speed + gb.phase) * gb.curve;
+        ctx.strokeStyle = gb.layer === 0 ? '#10381d' : gb.layer === 1 ? '#184d27' : '#236b37';
+        ctx.lineWidth = gb.w;
+        ctx.lineCap = 'round';
         ctx.beginPath();
-        ctx.moveTo(0, H);
-        ctx.lineTo(0, horizonY + 16);
-        ctx.bezierCurveTo(W * 0.34, horizonY + 38, W * 0.66, horizonY - 18, W, horizonY + 12);
-        ctx.lineTo(W, H);
-        ctx.closePath();
-        ctx.fill();
-
-        const moundGrad = ctx.createLinearGradient(0, H - 140, 0, H);
-        moundGrad.addColorStop(0, '#0a2924');
-        moundGrad.addColorStop(0.55, '#051817');
-        moundGrad.addColorStop(1, '#020b0d');
-        ctx.fillStyle = moundGrad;
-        ctx.beginPath();
-        ctx.moveTo(0, H);
-        ctx.lineTo(0, H - 68);
-        ctx.quadraticCurveTo(W * 0.5, H - 138, W, H - 68);
-        ctx.lineTo(W, H);
-        ctx.closePath();
-        ctx.fill();
-
-        for (const b of grassBlades) {
-          if (b.layer > 0) continue;
-          const sway = Math.sin(time * b.speed + b.phase) * 9;
-          const baseY = H - 8 - Math.sin((b.x / W) * Math.PI) * 32;
-          const tipX = b.x + b.curve + sway;
-          const tipY = baseY - b.h * easeOutCubic(elapsed / 0.7);
-          ctx.fillStyle = '#0a2621';
-          ctx.beginPath();
-          ctx.moveTo(b.x - b.w, baseY + 14);
-          ctx.quadraticCurveTo(b.x, baseY - b.h * 0.5, tipX, tipY);
-          ctx.quadraticCurveTo(b.x + b.w * 0.5, baseY - b.h * 0.45, b.x + b.w, baseY + 14);
-          ctx.closePath();
-          ctx.fill();
-        }
-
-        drawBouquet(ctx, time, elapsed);
-
-        for (const b of grassBlades) {
-          if (b.layer === 0) continue;
-          const sway = Math.sin(time * b.speed + b.phase) * 11;
-          const baseY = H - 6 - Math.sin((b.x / W) * Math.PI) * 28;
-          const curH = b.h * easeOutCubic(elapsed / 0.75);
-          const tipX = b.x + b.curve + sway;
-          const tipY = baseY - curH;
-
-          const g = ctx.createLinearGradient(b.x, baseY, tipX, tipY);
-          if (b.layer === 1) {
-            g.addColorStop(0, '#041212');
-            g.addColorStop(0.65, '#174736');
-            g.addColorStop(1, '#39855d');
-          } else {
-            g.addColorStop(0, '#061a18');
-            g.addColorStop(0.6, '#236647');
-            g.addColorStop(1, '#6cc482');
-          }
-          ctx.fillStyle = g;
-          ctx.beginPath();
-          ctx.moveTo(b.x - b.w, baseY + 14);
-          ctx.quadraticCurveTo(b.x, baseY - curH * 0.5, tipX, tipY);
-          ctx.quadraticCurveTo(b.x + b.w * 0.5, baseY - curH * 0.45, b.x + b.w, baseY + 14);
-          ctx.closePath();
-          ctx.fill();
-        }
-
-        for (const f of fireflies) {
-          f.x += f.vx + Math.sin(time * 0.0012 + f.phase) * 0.22;
-          f.y += f.vy;
-          if (f.y < H * 0.16) {
-            f.y = H - 18;
-            f.x = Math.random() * W;
-          }
-          const a = 0.3 + 0.7 * Math.abs(Math.sin(time * 0.0025 + f.phase));
-          ctx.save();
-          ctx.fillStyle = f.isGold ? `rgba(255, 230, 115, ${a})` : `rgba(135, 225, 255, ${a})`;
-          ctx.shadowColor = f.isGold ? '#ffd54f' : '#4fc3f7';
-          ctx.shadowBlur = 8;
-          ctx.beginPath();
-          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
-        }
-
-        ctx.restore();
-      }
+        ctx.moveTo(gb.x, H);
+        ctx.quadraticCurveTo(gb.x + sway * 0.5, H - gb.h * 0.6, gb.x + sway, H - gb.h);
+        ctx.stroke();
+      });
 
       for (let i = sparkles.length - 1; i >= 0; i--) {
-        const p = sparkles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy -= 0.012;
-        p.alpha -= p.decay;
-        if (p.alpha <= 0) {
+        const sp = sparkles[i];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.alpha -= sp.decay;
+        if (sp.alpha <= 0) {
           sparkles.splice(i, 1);
           continue;
         }
-        ctx.save();
-        ctx.globalAlpha = Math.max(0, p.alpha);
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 8;
+        ctx.fillStyle = sp.color;
+        ctx.globalAlpha = sp.alpha;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.arc(sp.x, sp.y, sp.r, 0, Math.PI * 2);
         ctx.fill();
-        ctx.restore();
+        ctx.globalAlpha = 1;
       }
 
-      requestAnimationFrame(animate);
+      if (appState === 'GROWING') {
+        const elapsed = (time - growStartTime) / 1000;
+        drawBouquet(ctx, time, elapsed);
+        if (elapsed >= 3.2 && appState === 'GROWING') {
+          appState = 'BLOOMED';
+          document.getElementById('envelopeCard').style.pointerEvents = 'auto';
+          document.getElementById('envelopeCard').style.opacity = '1';
+        }
+      } else if (appState === 'BLOOMED' || appState === 'LETTER_OPEN') {
+        drawBouquet(ctx, time, 3.2);
+      }
     }
 
-    const holdStage = document.getElementById('holdStage');
-    const holdRing = document.getElementById('holdRing');
+    let lastTime = 0;
+    function globalLoop(timestamp) {
+      if (!lastTime) lastTime = timestamp;
+      const dt = timestamp - lastTime;
+      renderScene(timestamp);
+      requestAnimationFrame(globalLoop);
+    }
+
+    /*************************************************************************
+     * 4. INTERACTION & UI CONTROLLER
+     *************************************************************************/
     const btnHold = document.getElementById('btnHold');
+    const holdRing = document.getElementById('holdRing');
+    const holdStage = document.getElementById('holdStage');
     const skyTitle = document.getElementById('skyTitle');
     const envelopeCard = document.getElementById('envelopeCard');
     const letterBackdrop = document.getElementById('letterBackdrop');
     const vintageLetterModal = document.getElementById('vintageLetterModal');
     const letterHeading = document.getElementById('letterHeading');
     const letterBody = document.getElementById('letterBody');
+    const btnCloseLetter = document.getElementById('btnCloseLetter');
 
+    let holdInterval = null;
     let holdProgress = 0;
-    let isHolding = false;
-    let holdRAF = null;
-    let sequenceTimers = [];
-    let typewriterTimer = null;
+    const CIRCUMFERENCE = 251.2;
 
-    function beginHold(e) {
-      if (e.type === 'touchstart') e.preventDefault();
+    function startHold(e) {
       if (appState !== 'HOLD') return;
+      e.preventDefault();
+      ensureAudio();
       startMusic();
-      isHolding = true;
 
-      function updateHold() {
-        if (!isHolding || appState !== 'HOLD') return;
-        holdProgress += 5.5;
-        const offset = 251.2 - (Math.min(100, holdProgress) / 100) * 251.2;
-        holdRing.style.strokeDashoffset = offset;
+      if (holdInterval) clearInterval(holdInterval);
+      holdInterval = setInterval(() => {
+        holdProgress += 2.8;
         if (holdProgress >= 100) {
-          isHolding = false;
-          triggerBouquetGrowth();
-        } else {
-          holdRAF = requestAnimationFrame(updateHold);
+          holdProgress = 100;
+          clearInterval(holdInterval);
+          triggerBloomSequence();
         }
-      }
-      cancelAnimationFrame(holdRAF);
-      holdRAF = requestAnimationFrame(updateHold);
+        updateHoldRing();
+      }, 25);
     }
 
-    function endHold() {
+    function cancelHold() {
       if (appState !== 'HOLD') return;
-      isHolding = false;
-      if (holdProgress > 0 && holdProgress < 100) {
-        function autoCompleteTap() {
-          if (appState !== 'HOLD') return;
-          holdProgress += 7.5;
-          const offset = 251.2 - (Math.min(100, holdProgress) / 100) * 251.2;
-          holdRing.style.strokeDashoffset = offset;
-          if (holdProgress >= 100) {
-            triggerBouquetGrowth();
-          } else {
-            requestAnimationFrame(autoCompleteTap);
-          }
+      if (holdInterval) clearInterval(holdInterval);
+      const decInterval = setInterval(() => {
+        holdProgress -= 5;
+        if (holdProgress <= 0) {
+          holdProgress = 0;
+          clearInterval(decInterval);
         }
-        requestAnimationFrame(autoCompleteTap);
-      }
+        updateHoldRing();
+      }, 15);
     }
 
-    btnHold.addEventListener('mousedown', beginHold);
-    btnHold.addEventListener('touchstart', beginHold, { passive: false });
-    window.addEventListener('mouseup', endHold);
-    window.addEventListener('touchend', endHold);
+    function updateHoldRing() {
+      const offset = CIRCUMFERENCE - (holdProgress / 100) * CIRCUMFERENCE;
+      holdRing.style.strokeDashoffset = offset;
+    }
 
-    function triggerBouquetGrowth() {
-      if (appState !== 'HOLD') return;
+    function triggerBloomSequence() {
       appState = 'GROWING';
       growStartTime = performance.now();
+
       playSparkleChime();
-      spawnSparkleBurst(W * 0.5, H - 90, 40);
+      spawnSparkleBurst(W * 0.5, H * 0.62, 55);
 
-      holdStage.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
+      holdStage.style.opacity = '0';
+      holdStage.style.pointerEvents = 'none';
+      setTimeout(() => {
+        holdStage.style.display = 'none';
+      }, 700);
 
-      sequenceTimers.push(setTimeout(() => {
-        skyTitle.classList.remove('opacity-0', 'translate-y-2');
-        skyTitle.classList.add('opacity-100', 'translate-y-0');
-      }, 300));
-
-      sequenceTimers.push(setTimeout(() => {
-        playSparkleChime();
-        spawnSparkleBurst(W * 0.5, H * 0.52, 45);
-      }, 950));
-
-      sequenceTimers.push(setTimeout(() => {
-        playSparkleChime();
-        spawnSparkleBurst(W * 0.5, H * 0.48, 60);
-      }, 2000));
-
-      sequenceTimers.push(setTimeout(() => {
-        showEnvelopeOnBouquet();
-      }, 2900));
+      skyTitle.style.opacity = '1';
+      skyTitle.style.transform = 'translateY(0px)';
     }
 
-    function showEnvelopeOnBouquet() {
-      envelopeCard.classList.remove('opacity-0', 'pointer-events-none');
-      envelopeCard.classList.add('opacity-100', 'pointer-events-auto');
-      envelopeCard.style.transform = 'translate(-50%, -50%) scale(1) rotate(-1.5deg)';
-    }
-
-    function openVintageLetter(e) {
-      if (e) e.stopPropagation();
+    function openLetter() {
+      if (appState !== 'BLOOMED') return;
+      appState = 'LETTER_OPEN';
       playSparkleChime();
-      spawnSparkleBurst(W * 0.5, H * 0.5, 35);
+      spawnSparkleBurst(W * 0.5, H * 0.5, 45);
 
-      letterBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-      letterBackdrop.classList.add('opacity-100', 'pointer-events-auto');
-      vintageLetterModal.classList.remove('scale-75');
-      vintageLetterModal.classList.add('scale-100');
+      envelopeCard.style.transform = 'translate(-50%, -50%) scale(0.85)';
+      envelopeCard.style.opacity = '0';
+      envelopeCard.style.pointerEvents = 'none';
 
-      startTypewriterLetter();
-    }
-
-    envelopeCard.addEventListener('click', openVintageLetter);
-    envelopeCard.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      openVintageLetter(e);
-    });
-
-    function startTypewriterLetter() {
-      if (typewriterTimer) clearTimeout(typewriterTimer);
       letterHeading.innerHTML = letterTitleHTML;
       letterBody.innerHTML = '';
 
+      letterBackdrop.style.pointerEvents = 'auto';
+      letterBackdrop.style.opacity = '1';
+      vintageLetterModal.style.transform = 'scale(1)';
+
       let pIdx = 0;
-      let cIdx = 0;
-      let pElem = null;
-
-      function typeStep() {
-        if (pIdx >= letterParagraphs.length) {
-          return;
-        }
-        if (cIdx === 0) {
-          pElem = document.createElement('p');
-          letterBody.appendChild(pElem);
-        }
-        const text = letterParagraphs[pIdx];
-        cIdx += 2;
-        pElem.textContent = text.slice(0, cIdx);
-
-        if (cIdx >= text.length) {
+      function typeNextParagraph() {
+        if (pIdx < letterParagraphs.length) {
+          const p = document.createElement('p');
+          p.className = "opacity-0 transition-opacity duration-700";
+          p.textContent = letterParagraphspIdx;
+          letterBody.appendChild(p);
+          setTimeout(() => { p.classList.remove('opacity-0'); }, 50);
           pIdx++;
-          cIdx = 0;
-          typewriterTimer = setTimeout(typeStep, 180);
-        } else {
-          typewriterTimer = setTimeout(typeStep, 20);
+          setTimeout(typeNextParagraph, 750);
         }
       }
-      typeStep();
+      setTimeout(typeNextParagraph, 300);
     }
 
-    function closeVintageLetter(e) {
-      if (e) e.stopPropagation();
-      if (typewriterTimer) clearTimeout(typewriterTimer);
+    function closeLetter() {
+      if (appState !== 'LETTER_OPEN') return;
       playSparkleChime();
-      spawnSparkleBurst(W * 0.5, H * 0.52, 35);
 
-      letterBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
-      letterBackdrop.classList.add('opacity-0', 'pointer-events-none');
-      vintageLetterModal.classList.remove('scale-100');
-      vintageLetterModal.classList.add('scale-75');
+      letterBackdrop.style.opacity = '0';
+      letterBackdrop.style.pointerEvents = 'none';
+      vintageLetterModal.style.transform = 'scale(0.75)';
 
-      // Ẩn hoàn toàn phong thư nhỏ trên bó hoa khi bấm đóng thư
-      envelopeCard.classList.remove('opacity-100', 'pointer-events-auto');
-      envelopeCard.classList.add('opacity-0', 'pointer-events-none');
-      envelopeCard.style.display = 'none';
+      envelopeCard.style.opacity = '1';
+      envelopeCard.style.transform = 'translate(-50%, -50%) scale(1) rotate(-1.5deg)';
+      appState = 'BLOOMED';
     }
 
-    document.getElementById('btnCloseLetter').addEventListener('click', closeVintageLetter);
+    btnHold.addEventListener('mousedown', startHold);
+    window.addEventListener('mouseup', cancelHold);
+    btnHold.addEventListener('touchstart', startHold, { passive: false });
+    window.addEventListener('touchend', cancelHold);
 
-    window.addEventListener('resize', initScene);
-    window.onload = () => {
+    envelopeCard.addEventListener('click', openLetter);
+    btnCloseLetter.addEventListener('click', closeLetter);
+
+    window.addEventListener('resize', () => {
       initScene();
-      requestAnimationFrame(animate);
-    };
+    });
+
+    window.addEventListener('load', () => {
+      initScene();
+      requestAnimationFrame(globalLoop);
+    });
   </script>
 </body>
 </html>
