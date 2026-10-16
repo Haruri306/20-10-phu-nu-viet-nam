@@ -146,7 +146,7 @@
     <span class="text-sky-300 text-xs">↗</span>
   </a>
 
-  <!-- 1. BACKGROUND CANVAS (Night Sky, Stars, Hills, Bouquet & Fireflies) -->
+  <!-- 1. BACKGROUND CANVAS -->
   <canvas id="sceneCanvas" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
   <!-- 2. GLOWING SKY TITLE -->
@@ -215,32 +215,26 @@
   <div id="letterBackdrop"
     class="fixed inset-0 z-[160] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500">
 
-    <!-- Vintage Letter Container -->
     <div id="vintageLetterModal"
       class="vintage-letter-modal relative w-[92vw] max-w-[395px] sm:max-w-[430px] transform scale-75 transition-transform duration-500 mt-3 sm:mt-5">
 
-      <!-- Top-Right Red Heart Badge -->
       <div class="absolute -top-2.5 -right-2.5 z-30 w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center shadow-lg border-2 border-[#fff9f0]">
         <span class="text-xs">❤</span>
       </div>
 
       <div class="vintage-letter-paper relative px-6 py-6 sm:px-8 sm:py-7 max-h-[68vh] overflow-y-auto letter-scroll">
-        <!-- Tiny Red Hearts Inside Paper -->
         <div class="absolute top-3 right-5 pointer-events-none flex items-center gap-1 opacity-80">
           <span class="text-rose-400 text-[10px] rotate-12">❤</span>
           <span class="text-rose-500 text-xs -rotate-12">❤</span>
         </div>
 
-        <!-- Greeting Header -->
         <h2 id="letterHeading" class="font-cursive text-2xl sm:text-[28px] font-bold text-center text-[#4a301d] mb-3 leading-snug">
           Gửi các bạn nữ <span class="text-rose-500">8A1</span> xinh đẹp!
         </h2>
 
-        <!-- Typewriter Body Paragraphs -->
         <div id="letterBody" class="font-cursive text-[18px] sm:text-[21px] leading-[1.6] text-[#4a311f] space-y-2.5 min-h-[185px]">
         </div>
 
-        <!-- Close Button -->
         <div class="mt-5 text-center">
           <button id="btnCloseLetter"
             class="px-5 py-1.5 rounded-full bg-[#e6ccb0]/85 hover:bg-rose-500 hover:text-white text-[#523622] text-xs font-semibold border border-[#cda882] transition shadow-sm cursor-pointer">
@@ -629,61 +623,6 @@
       ctx.fill();
     }
 
-    function drawLilyOfTheValley(ctx, baseX, baseY, side, growProg, time) {
-      if (growProg <= 0.01) return;
-      const g = easeOutCubic(growProg);
-      const sway = Math.sin(time * 0.0024 + (side > 0 ? 1.2 : 0)) * 6 * g;
-
-      ctx.save();
-      ctx.translate(baseX, baseY);
-
-      ctx.fillStyle = '#2e7d47';
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.quadraticCurveTo(side * 22 * g, -18 * g, side * 28 * g + sway * 0.4, -44 * g);
-      ctx.quadraticCurveTo(side * 8 * g, -26 * g, 0, 0);
-      ctx.fill();
-
-      const topX = -side * 8 * g + sway;
-      const topY = -72 * g;
-      ctx.strokeStyle = '#52b768';
-      ctx.lineWidth = 2.4;
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.bezierCurveTo(side * 16 * g, -32 * g, side * 14 * g + sway * 0.5, -66 * g, topX, topY);
-      ctx.stroke();
-
-      const bells = [
-        { bx: topX, by: topY, rot: side * 0.25, sc: 0.95, d: 0.2 },
-        { bx: side * 5 * g + sway * 0.75, by: -64 * g, rot: side * 0.4, sc: 0.82, d: 0.35 },
-        { bx: side * 10 * g + sway * 0.5, by: -50 * g, rot: side * 0.5, sc: 0.76, d: 0.5 }
-      ];
-
-      bells.forEach(b => {
-        const bp = clamp01((growProg - b.d) / (1 - b.d));
-        if (bp <= 0) return;
-        const bs = b.sc * easeOutBack(bp);
-        ctx.save();
-        ctx.translate(b.bx, b.by);
-        ctx.rotate(b.rot + Math.sin(time * 0.004) * 0.08);
-        ctx.scale(bs, bs);
-
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.85)';
-        ctx.shadowBlur = 8;
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-7, 2, -8, 10, -3, 14);
-        ctx.quadraticCurveTo(0, 11, 3, 14);
-        ctx.bezierCurveTo(8, 10, 7, 2, 0, 0);
-        ctx.fill();
-        ctx.restore();
-      });
-
-      ctx.restore();
-    }
-
     function drawBouquet(ctx, time, elapsed) {
       const bScale = Math.min(1.08, Math.max(0.76, Math.min(W / 430, H / 720)));
       const centerX = W * 0.5;
@@ -977,7 +916,7 @@
       });
 
       for (let i = sparkles.length - 1; i >= 0; i--) {
-        const sp = sparklesi;
+        const sp = sparkles[i];
         sp.x += sp.vx;
         sp.y += sp.vy;
         sp.alpha -= sp.decay;
@@ -1009,7 +948,6 @@
     let lastTime = 0;
     function globalLoop(timestamp) {
       if (!lastTime) lastTime = timestamp;
-      const dt = timestamp - lastTime;
       renderScene(timestamp);
       requestAnimationFrame(globalLoop);
     }
